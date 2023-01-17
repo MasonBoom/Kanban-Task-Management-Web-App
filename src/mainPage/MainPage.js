@@ -1,10 +1,14 @@
 import React from 'react';
+import {
+  MainContainer,
+} from './mainPage.styles';
+import SideBar from '../components/SideBar';
 
 function MainPage() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <MainContainer>
+      <SideBar />
+    </MainContainer>
   );
 }
 
