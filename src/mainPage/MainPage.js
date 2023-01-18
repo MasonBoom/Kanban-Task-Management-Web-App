@@ -2,6 +2,7 @@ import React from 'react';
 import {
   MainContainer,
   Header,
+  MainContent,
 } from './mainPage.styles';
 import SideBar from '../components/SideBar';
 
@@ -9,9 +10,11 @@ function MainPage() {
   return (
     <MainContainer>
       <SideBar />
-      <Header>
-        <h1>Board Title</h1>
-      </Header>
+      <MainContent>
+        <Header>
+          <h1>Board Title</h1>
+        </Header>
+      </MainContent>
     </MainContainer>
   );
 }

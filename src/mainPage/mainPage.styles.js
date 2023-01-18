@@ -12,6 +12,7 @@ export const Header = styled.div`
   height: 100px;
   border-bottom: 1px solid #E4EBFA;
   align-items: center;
+  background: #ffffff;
 
   h1 {
     margin-left: 25px;
@@ -22,4 +23,10 @@ export const Header = styled.div`
     line-height: 30px;
     color: #000112;
   }
+`;
+
+export const MainContent = styled.div`
+  width: 100%;
+  height: 100vh;
+  background: #F2F2F2;
 `;
