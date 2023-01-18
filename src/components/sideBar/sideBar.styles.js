@@ -60,3 +60,11 @@ export const AddBoard = styled.div`
         }
     }
 `;
+
+export const BottomDiv = styled.div`
+  float: bottom;
+  margin-top: auto;
+  margin-left: 35px;
+  margin-bottom: 10vh;
+  height: 100px;
+`;

@@ -4,7 +4,7 @@ import {
   Header,
   MainContent,
 } from './mainPage.styles';
-import SideBar from '../components/SideBar';
+import SideBar from '../components/sideBar/SideBar';
 
 function MainPage() {
   return (

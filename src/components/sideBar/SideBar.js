@@ -5,9 +5,11 @@ import {
     BoardsLabel,
     BoardContainer,
     AddBoard,
+    BottomDiv,
 } from './sideBar.styles';
-import logoIcon from '../icons/mainLogo.svg'
-import boardIconPurple from '../icons/boardIconPurple.svg'
+import LightDarkMode from '../lightDarkMode/LightDarkMode';
+import logoIcon from '../../icons/mainLogo.svg'
+import boardIconPurple from '../../icons/boardIconPurple.svg'
 
 function SideBar() {
   const [boardsArray, setBoardsArray] = useState([])
@@ -18,10 +20,13 @@ function SideBar() {
       <BoardsLabel>All Boards ({boardsArray.length})</BoardsLabel>
       <BoardContainer>
         <AddBoard>
-            <img src={boardIconPurple} alt="board icon" />
-            <span>+ Create New Board</span>
+          <img src={boardIconPurple} alt="board icon" />
+          <span>+ Create New Board</span>
         </AddBoard>
       </BoardContainer>
+      <BottomDiv>
+        <LightDarkMode />
+      </BottomDiv>
     </SideBarContainer>
   );
 }
