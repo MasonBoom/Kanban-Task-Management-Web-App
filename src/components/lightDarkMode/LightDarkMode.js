@@ -7,11 +7,11 @@ import {
 import light from '../../icons/light.svg';
 import dark from '../../icons/dark.svg';
 
-function LightDarkMode({mode = 'light'}) {
-  const [lightMode, setLightMode] = useState(mode);
+function LightDarkMode({mode}) {
+  const [lightMode, setLightMode] = useState('');
     
   const toggleMode = () => {
-    if(lightMode === 'light') {
+    if(lightMode === 'light' || lightMode === '') {
       setLightMode('dark');
     } else {
       setLightMode('light');
@@ -21,7 +21,9 @@ function LightDarkMode({mode = 'light'}) {
   return (
     <Container>
       <Icon src={light} alt="light icon"/>
-      <Switch />
+      <Switch>
+        <div className={lightMode} onClick={toggleMode} />
+      </Switch>
       <Icon src={dark} alt="dark icon"/>
     </Container>
   );
