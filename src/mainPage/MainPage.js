@@ -9,7 +9,7 @@ import SideBar from '../components/sideBar/SideBar';
 function MainPage() {
   return (
     <MainContainer>
-      <SideBar />
+      <SideBar isHidden={false} />
       <MainContent>
         <Header>
           <h1>Board Title</h1>

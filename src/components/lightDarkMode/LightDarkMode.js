@@ -13,8 +13,10 @@ function LightDarkMode({mode}) {
   const toggleMode = () => {
     if(lightMode === 'light' || lightMode === '') {
       setLightMode('dark');
+      mode = 'dark'
     } else {
       setLightMode('light');
+      mode = 'light'
     }
   }
     

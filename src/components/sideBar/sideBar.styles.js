@@ -1,4 +1,26 @@
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
+
+const slideIn = keyframes`
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+`;
+
+const slideOut = keyframes`
+    from {
+        transform: translateX(0);
+        width: 300px;
+        display: flex;
+    }
+    to {
+        transform: translateX(-100%);
+        width: 0px;
+        display: hidden;
+    }
+`
 
 export const SideBarContainer = styled.div`
     display: flex;
@@ -6,6 +28,18 @@ export const SideBarContainer = styled.div`
     width: 300px;
     height: 100vh;
     border-right: 1px solid #E4EBFA;
+
+    &.hidden {
+        animation: ${slideOut} 0.5s ease-in-out;
+        animation-fill-mode: forwards;
+        display: hidden;
+    }
+
+    &.visible {
+        animation: ${slideIn} 0.5s ease-in-out;
+        animation-fill-mode: forwards;
+        display: flex;
+    }
 `;
 
 export const Logo = styled.img`
@@ -67,4 +101,31 @@ export const BottomDiv = styled.div`
   margin-left: 35px;
   margin-bottom: 10vh;
   height: 100px;
+`;
+
+export const HideSidebar = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-top: 2.5rem;
+    align-items: center;
+
+    img {
+        width: 20px;
+        height: 20px;
+    }
+
+    span {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 19px;
+        color: #828FA3;
+        margin-left: 15px;
+
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
 `;
