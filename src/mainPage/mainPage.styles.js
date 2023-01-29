@@ -23,6 +23,40 @@ export const Header = styled.div`
     line-height: 30px;
     color: #000112;
   }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    margin-left: 130vh;
+    height: 48px;
+
+    button {
+      width: 164px;
+      height: 48px;
+      background: #ddccff;
+      border-radius: 24px;
+      border: none;
+      font-family: 'Plus Jakarta Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 19px;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #b3a3ff;
+    }
+
+    img {
+      position: relative;
+      top: 10px;
+      margin-left: 30px;
+      cursor: pointer;
+      height: 25px;
+    }
+  }
 `;
 
 export const MainContent = styled.div`
