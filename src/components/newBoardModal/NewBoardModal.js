@@ -1,35 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
-    ModalContainer,
+  ModalContainer,
 } from './newBoardModal.styles'
 
-class NewBoardModal extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            columns: [],
-        };
-    }
+function NewBoardModal({ isVisible = false, onCancel }) {
+  const [modalVisible, setModalVisible] = useState(isVisible);
 
-    handleNameChange = (event) => {
-        this.setState({ name: event.target.value });
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
 
-    handleColumnChange = (event) => {
-        this.setState({ columns: event.target.value.split(',') });
-    }
+  const handleCancel = () => {
+    setModalVisible(false);
+    onCancel();
+  };
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        this.props.addBoard(this.state);
-    }
-
-    render() {
-        <ModalContainer>
-            <form onSubmit={this.handleSubmit}></form>
-        </ModalContainer>
-    }
+  return (
+    <ModalContainer isVisible={modalVisible}>
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="Board name" />
+        <button type="submit">Create</button>
+        <button type="button" onClick={handleCancel}>
+          Cancel
+        </button>
+      </form>
+    </ModalContainer>
+  )
 }
 
 export default NewBoardModal;

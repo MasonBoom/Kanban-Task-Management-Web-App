@@ -8,6 +8,7 @@ import SideBar from '../components/sideBar/SideBar';
 import threeDots from '../icons/threeDots.svg';
 
 function MainPage() {
+
   return (
     <MainContainer>
       <SideBar isHidden={false} />

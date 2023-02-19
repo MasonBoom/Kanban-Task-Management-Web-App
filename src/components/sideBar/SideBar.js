@@ -9,17 +9,28 @@ import {
     HideSidebar,
 } from './sideBar.styles';
 import LightDarkMode from '../lightDarkMode/LightDarkMode';
-import logoIcon from '../../icons/mainLogo.svg'
-import boardIconPurple from '../../icons/boardIconPurple.svg'
-import hideSideBar from '../../icons/hideSideBar.svg'
+import NewBoardModal from '../newBoardModal/NewBoardModal';
+import logoIcon from '../../icons/mainLogo.svg';
+import boardIconPurple from '../../icons/boardIconPurple.svg';
+import hideSideBar from '../../icons/hideSideBar.svg';
 
 function SideBar() {
   const [boardsArray, setBoardsArray] = useState([])
   const [hidden, setHidden] = useState(false)
   const [visible, setVisible] = useState(null) // prevents css animations on page load
+  const [modalIsVisible, setModalIsVisible] = useState(false)
+
+  const handleCancel = () => {
+    setModalIsVisible(false);
+  }
+
+  const toggleModal = () => {
+    setModalIsVisible(true);
+  }
 
   return (
     <>
+      {modalIsVisible && <NewBoardModal isVisible={modalIsVisible} onCancel={handleCancel} />}
       {hidden === false ? (
         <SideBarContainer className={visible === true ? 'visible' : ''}>
           <Logo src={logoIcon} alt="logo" />
@@ -27,7 +38,7 @@ function SideBar() {
           <BoardContainer>
             <AddBoard>
               <img src={boardIconPurple} alt="board icon" />
-              <span>+ Create New Board</span>
+              <span onClick={toggleModal}>+ Create New Board</span>
             </AddBoard>
           </BoardContainer>
           <BottomDiv>
@@ -44,12 +55,14 @@ function SideBar() {
       ) : (
         <SideBarContainer className='hidden'>
           <BottomDiv>
-            <HideSidebar>
+            <HideSidebar className='hidden'>
               <img src={hideSideBar} alt="hide sidebar icon" />
-              <span onClick={() => {
-                setHidden(false)
-                setVisible(true)
-              }}>Show Sidebar</span>
+              <span 
+                onClick={() => {
+                  setHidden(false)
+                  setVisible(true)
+                }}
+                >Show Sidebar</span>
             </HideSidebar>
           </BottomDiv>
         </SideBarContainer>
