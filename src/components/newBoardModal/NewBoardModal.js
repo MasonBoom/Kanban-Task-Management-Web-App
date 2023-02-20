@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
   ModalContainer,
+  Modal,
 } from './newBoardModal.styles'
 
 function NewBoardModal({ isVisible = false, onCancel }) {
@@ -17,13 +18,15 @@ function NewBoardModal({ isVisible = false, onCancel }) {
 
   return (
     <ModalContainer isVisible={modalVisible}>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Board name" />
-        <button type="submit">Create</button>
-        <button type="button" onClick={handleCancel}>
-          Cancel
-        </button>
-      </form>
+      <Modal>
+        <form onSubmit={handleSubmit}>
+          <input type="text" placeholder="Board name" />
+          <button type="submit">Create</button>
+          <button type="button" onClick={handleCancel}>
+            Cancel
+          </button>
+        </form>
+      </Modal>
     </ModalContainer>
   )
 }
