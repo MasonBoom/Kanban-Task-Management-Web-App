@@ -20,6 +20,7 @@ function NewBoardModal({ isVisible = false, onCancel }) {
     <ModalContainer isVisible={modalVisible}>
       <Modal>
         <form onSubmit={handleSubmit}>
+          <h1>Add New Board</h1>
           <input type="text" placeholder="Board name" />
           <button type="submit">Create</button>
           <button type="button" onClick={handleCancel}>

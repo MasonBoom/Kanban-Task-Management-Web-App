@@ -16,9 +16,18 @@ export const Modal = styled.div`
   height: 429px;
   background: #FFFFFF;
   border-radius: 6px;
+  padding: 32px;
 
   form {
     width: 200px;
     height: 200px;
+  }
+
+  h1 {
+    font-family: 'Plus Jakarta Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
   }
 `;
