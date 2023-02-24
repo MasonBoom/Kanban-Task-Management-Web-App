@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   ModalContainer,
   Modal,
+  NameInput,
 } from './newBoardModal.styles'
 
 function NewBoardModal({ isVisible = false, onCancel }) {
@@ -21,8 +22,9 @@ function NewBoardModal({ isVisible = false, onCancel }) {
       <Modal>
         <form onSubmit={handleSubmit}>
           <h1>Add New Board</h1>
-          <input type="text" placeholder="Board name" />
-          <button type="submit">Create</button>
+          <label htmlFor="board-name">Name</label>
+          <NameInput type="text" placeholder="e.g. Web Design" />
+          <label htmlFor="columns">Columns</label>
           <button type="button" onClick={handleCancel}>
             Cancel
           </button>
