@@ -3,6 +3,7 @@ import {
   ModalContainer,
   Modal,
   NameInput,
+  ColumnsInput,
 } from './newBoardModal.styles'
 
 function NewBoardModal({ isVisible = false, onCancel }) {
@@ -25,6 +26,7 @@ function NewBoardModal({ isVisible = false, onCancel }) {
           <label htmlFor="board-name">Name</label>
           <NameInput type="text" placeholder="e.g. Web Design" />
           <label htmlFor="columns">Columns</label>
+          <ColumnsInput type="text" placeholder="e.g. To Do, In Progress, Done" />
           <button type="button" onClick={handleCancel}>
             Cancel
           </button>

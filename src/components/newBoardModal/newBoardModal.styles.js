@@ -61,3 +61,8 @@ export const NameInput = styled.input`
     color: #828FA3;
   }
 `;
+
+export const ColumnsInput = styled(NameInput)`
+  width: 87%;
+  margin-bottom: 12px;
+`;
