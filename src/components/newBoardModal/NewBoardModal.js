@@ -8,6 +8,7 @@ import {
 
 function NewBoardModal({ isVisible = false, onCancel }) {
   const [modalVisible, setModalVisible] = useState(isVisible);
+  const [columns, setColumns] = useState([<ColumnsInput type="text" placeholder="e.g. To Do, In Progress, Done" />]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +27,7 @@ function NewBoardModal({ isVisible = false, onCancel }) {
           <label htmlFor="board-name">Name</label>
           <NameInput type="text" placeholder="e.g. Web Design" />
           <label htmlFor="columns">Columns</label>
-          <ColumnsInput type="text" placeholder="e.g. To Do, In Progress, Done" />
+          {columns}
           <button type="button" onClick={handleCancel}>
             Cancel
           </button>
