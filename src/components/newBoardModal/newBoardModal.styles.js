@@ -11,12 +11,13 @@ export const ModalContainer = styled.div`
 
 export const Modal = styled.div`
   margin: auto;
-  margin-top: 15%;
+  margin-top: 10%;
   width: 480px;
-  height: 429px;
+  height: 550px;
   background: #FFFFFF;
   border-radius: 6px;
   padding: 32px;
+  position: relative;
 
   form {
     width: 100%;
@@ -75,6 +76,12 @@ export const X = styled.img`
   height: 20px;
 `;
 
+export const ButtonDiv = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 87%;
+`;
+
 export const AddColumn = styled.button`
   display: flex;
   background: rgba(99, 95, 199, 0.1);
@@ -84,7 +91,7 @@ export const AddColumn = styled.button`
   border: none;
   align-content: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   cursor: pointer;
   font-family: 'Plus Jakarta Sans';
   font-style: normal;
@@ -106,4 +113,17 @@ export const CreateBoard = styled(AddColumn)`
   &:hover {
     background: #4F4AA8;
   }
-`
+`;
+
+export const GrayX = styled.img`
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+`;
+
+export const ColumnItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
