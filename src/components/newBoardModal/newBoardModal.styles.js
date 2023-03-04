@@ -66,3 +66,44 @@ export const ColumnsInput = styled(NameInput)`
   width: 87%;
   margin-bottom: 12px;
 `;
+
+export const X = styled.img`
+  position: relative;
+  float: right;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+`;
+
+export const AddColumn = styled.button`
+  display: flex;
+  background: rgba(99, 95, 199, 0.1);
+  border-radius: 20px;
+  width: 100%;
+  height: 40px;
+  border: none;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  cursor: pointer;
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 36px;
+  text-align: center;
+  color: #635FC7;
+
+  &:hover {
+    background: rgba(99, 95, 199, 0.3);
+  }
+`;
+
+export const CreateBoard = styled(AddColumn)`
+  background: #635FC7;
+  color: #FFFFFF;
+
+  &:hover {
+    background: #4F4AA8;
+  }
+`
