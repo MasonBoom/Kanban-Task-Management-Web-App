@@ -14,21 +14,20 @@ import {
 import x from '../../icons/x.svg';
 import grayX from '../../icons/grayX.svg';
 
-function NewBoardModal({ isVisible = false, onCancel }) {
+function NewBoardModal({ isVisible = false, onCancel, onCreate }) {
   const [modalVisible, setModalVisible] = useState(isVisible);
-  const [columns, setColumns] = useState([
-    <ColumnItem>
-      <ColumnsInput 
-        type="text" 
-        placeholder="e.g. To Do, In Progress, Done" 
-      />
-      <GrayX src={grayX} alt="grayX" />
-    </ColumnItem>
-  ]);
+  const [boardName, setBoardName] = useState('');
+  const [columns, setColumns] = useState([{ name: '' }]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  }
+    const newBoardData = {
+      name: boardName,
+      columns: columns.map((column) => column.name),
+    };
+    onCreate(newBoardData);
+    setModalVisible(false);
+  };
 
   const handleCancel = () => {
     setModalVisible(false);
@@ -36,21 +35,18 @@ function NewBoardModal({ isVisible = false, onCancel }) {
   };
 
   const handleAddColumn = () => {
-    if(columns.length < 5) {
-      setColumns([...columns,
-        <ColumnItem>
-          <ColumnsInput 
-            type="text" 
-            placeholder="e.g. To Do, In Progress, Done" 
-          />
-          <GrayX src={grayX} alt="grayX" />
-        </ColumnItem> 
-      ]);
-      console.log(columns)
+    if (columns.length < 5) {
+      setColumns([...columns, { name: '' }]);
     } else {
       alert('You can only have 5 columns per board');
     }
-  }
+  };
+
+  const handleColumnNameChange = (e, index) => {
+    const updatedColumns = [...columns];
+    updatedColumns[index].name = e.target.value;
+    setColumns(updatedColumns);
+  };
 
   return (
     <ModalContainer isVisible={modalVisible}>
@@ -59,9 +55,24 @@ function NewBoardModal({ isVisible = false, onCancel }) {
         <form onSubmit={handleSubmit}>
           <h1>Add New Board</h1>
           <label htmlFor="board-name">Name</label>
-          <NameInput type="text" placeholder="e.g. Web Design" />
+          <NameInput
+            type="text"
+            placeholder="e.g. Web Design"
+            value={boardName}
+            onChange={(e) => setBoardName(e.target.value)}
+          />
           <label htmlFor="columns">Columns</label>
-          {columns}
+          {columns.map((column, index) => (
+            <ColumnItem key={index}>
+              <ColumnsInput
+                type="text"
+                placeholder="e.g. To Do, In Progress, Done"
+                value={column.name}
+                onChange={(e) => handleColumnNameChange(e, index)}
+              />
+              <GrayX src={grayX} alt="grayX" />
+            </ColumnItem>
+          ))}
           <ButtonDiv>
             <AddColumn onClick={handleAddColumn}>+ Add New Column</AddColumn>
             <CreateBoard type="submit">Create Board</CreateBoard>
@@ -69,7 +80,7 @@ function NewBoardModal({ isVisible = false, onCancel }) {
         </form>
       </Modal>
     </ModalContainer>
-  )
+  );
 }
 
 export default NewBoardModal;
