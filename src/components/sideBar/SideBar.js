@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
-    SideBarContainer,
-    Logo,
-    BoardsLabel,
-    BoardContainer,
-    AddBoard,
-    BottomDiv,
-    HideSidebar,
+  SideBarContainer,
+  Logo,
+  BoardsLabel,
+  BoardContainer,
+  AddBoard,
+  BottomDiv,
+  HideSidebar,
 } from './sideBar.styles';
 import LightDarkMode from '../lightDarkMode/LightDarkMode';
 import NewBoardModal from '../newBoardModal/NewBoardModal';
+import { BoardDataContext } from '../../context/BoardDataContext';
 import logoIcon from '../../icons/mainLogo.svg';
 import boardIconPurple from '../../icons/boardIconPurple.svg';
 import hideSideBar from '../../icons/hideSideBar.svg';
 
 function SideBar() {
-  const [boardsArray, setBoardsArray] = useState([])
   const [hidden, setHidden] = useState(false)
   const [visible, setVisible] = useState(null) // prevents css animations on page load
   const [modalIsVisible, setModalIsVisible] = useState(false)
+  const { boardsArray, setBoardsArray } = useContext(BoardDataContext);
 
   const handleCancel = () => {
     setModalIsVisible(false);
@@ -28,9 +29,20 @@ function SideBar() {
     setModalIsVisible(true);
   }
 
+  const handleCreateBoard = (newBoardData) => {
+    setBoardsArray([...boardsArray, newBoardData]);
+    setModalIsVisible(false);
+  };
+
   return (
     <>
-      {modalIsVisible && <NewBoardModal isVisible={modalIsVisible} onCancel={handleCancel} />}
+      {modalIsVisible && (
+        <NewBoardModal
+          isVisible={modalIsVisible}
+          onCancel={handleCancel}
+          onCreate={handleCreateBoard}
+        />
+      )}
       {hidden === false ? (
         <SideBarContainer className={visible === true ? 'visible' : ''}>
           <Logo src={logoIcon} alt="logo" />

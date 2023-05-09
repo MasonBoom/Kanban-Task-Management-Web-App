@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   ModalContainer,
   Modal,
@@ -11,6 +11,7 @@ import {
   GrayX,
   ColumnItem,
 } from './newBoardModal.styles'
+import { BoardDataContext } from '../../context/BoardDataContext';
 import x from '../../icons/x.svg';
 import grayX from '../../icons/grayX.svg';
 
@@ -18,6 +19,7 @@ function NewBoardModal({ isVisible = false, onCancel, onCreate }) {
   const [modalVisible, setModalVisible] = useState(isVisible);
   const [boardName, setBoardName] = useState('');
   const [columns, setColumns] = useState([{ name: '' }]);
+  const { setBoards } = useContext(BoardDataContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,6 +29,7 @@ function NewBoardModal({ isVisible = false, onCancel, onCreate }) {
     };
     onCreate(newBoardData);
     setModalVisible(false);
+    setBoards((prevBoards) => [...prevBoards, newBoardData]);
   };
 
   const handleCancel = () => {
@@ -73,11 +76,11 @@ function NewBoardModal({ isVisible = false, onCancel, onCreate }) {
               <GrayX src={grayX} alt="grayX" />
             </ColumnItem>
           ))}
+        </form>
           <ButtonDiv>
             <AddColumn onClick={handleAddColumn}>+ Add New Column</AddColumn>
-            <CreateBoard type="submit">Create Board</CreateBoard>
+            <CreateBoard type="submit" onClick={handleSubmit}>Create Board</CreateBoard>
           </ButtonDiv>
-        </form>
       </Modal>
     </ModalContainer>
   );
